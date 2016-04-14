@@ -52,6 +52,7 @@ class NewVisitorTest(unittest.TestCase):
 		self.check_for_row_in_list_tabel('1: buy custom Cain rifle')
 		self.check_for_row_in_list_tabel('2: sharpen blade')
 
+		self.browser.implicitly_wait(3)
 
 		#Mr.Cain wonders whether the site will remember his list. The he sees
 		#that the site has generated a unique URL for him -- there is some
