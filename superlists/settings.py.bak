@@ -25,7 +25,9 @@ SECRET_KEY = '+2pvzxwkxs-6-ckf3x^*j34vva81dldv0f9uvt4rny7#1ij+l*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["fozodavid.dynu.com"]
+TEMPLATE_DEBUG = DEBUG
+
+ALLOWED_HOSTS = ['fozodavid-staging.dynu.com']
 
 
 # Application definition
@@ -59,7 +61,6 @@ TEMPLATES = [
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
-            'debug': DEBUG,
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -122,4 +123,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../static'))
-from .secret_key import SECRET_KEY
