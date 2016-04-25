@@ -1,6 +1,5 @@
 from django.shortcuts import redirect, render
 from django.core.exceptions import ValidationError
-from django.core.urlresolvers import reverse
 from lists.models import Item, List
 
 # Create your views here.
