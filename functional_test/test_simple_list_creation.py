@@ -17,7 +17,7 @@ class NewVisitorTest(FunctionalTest):
 		self.assertIn('To-Do', header_text)
 
 		#He is invited to enter todo items straight away
-		inputbox = self.browser.find_element_by_id('id_new_item')
+		inputbox = self.browser.find_element_by_id('id_text') # need to be revised problem with inheritance 
 		self.assertEqual(
 			inputbox.get_attribute('placeholder'),
 			'Enter a To-Do item'
@@ -35,7 +35,7 @@ class NewVisitorTest(FunctionalTest):
 
 		#There is still a text box inviting him to add another item. He
 		#enters "Sharpen blade"
-		inputbox = self.browser.find_element_by_id('id_new_item')
+		inputbox = self.browser.find_element_by_id('id_text')
 		inputbox.send_keys('sharpen blade')
 		inputbox.send_keys(Keys.ENTER)
 		#The page updates again, and now shows both items on the list

@@ -6,6 +6,9 @@ from unittest import skip
 
 class FunctionalTest(StaticLiveServerTestCase):
 	
+	def get_item_input_box(self):
+		return self.browser.find_element_by_id('id_text')
+
 	@classmethod
 	def setUpClass(cls):
 		for arg in sys.argv:
@@ -40,7 +43,7 @@ class NewVisitorTest(FunctionalTest):
 		self.assertIn('To-Do', header_text)
 
 		#He is invited to enter todo items straight away
-		inputbox = self.browser.find_element_by_id('id_new_item')
+		inputbox = self.browser.find_element_by_id('id_text') # need to be revised
 		self.assertEqual(
 			inputbox.get_attribute('placeholder'),
 			'Enter a To-Do item'
@@ -58,7 +61,7 @@ class NewVisitorTest(FunctionalTest):
 
 		#There is still a text box inviting him to add another item. He
 		#enters "Sharpen blade"
-		inputbox = self.browser.find_element_by_id('id_new_item')
+		inputbox = self.get_item_input_box()
 		inputbox.send_keys('sharpen blade')
 		inputbox.send_keys(Keys.ENTER)
 		#The page updates again, and now shows both items on the list
@@ -84,19 +87,8 @@ class NewVisitorTest(FunctionalTest):
 
 class LayoutAndStylingTest(FunctionalTest):
 
+	@skip
 	def test_layout_and_styling(self):
-	# 	#Mr.Cain goes to the homepage
-	# 	self.browser.get(self.server_url)
-	# 	self.browser.set_window_size(1024, 768)
-
-	# 	#She notices the input box is nicely centered
-	# 	inputbox = self.browser.find_element_by_id('id_new_item')
-	# 	inputbox.send_keys('testing\n')
-	# 	self.assertAlmostEqual(
-	# 		inputbox.location['x'] + inputbox.size['width'] / 2,
-	# 		512,
-	# 		delta = 5
-	# 	)
 		pass
 
 class ItemValidationTest(FunctionalTest):
@@ -117,6 +109,3 @@ class ItemValidationTest(FunctionalTest):
 
 		# And she can correct it by filling some text in
 		self.fail('write me!')
-
-if __name__ == '__main__':
-	unittest.main(warnings = 'ignore')
