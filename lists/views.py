@@ -28,19 +28,6 @@ def view_list(request, list_id):
 	if request.method == 'POST':
 		form = ItemForm(data=request.POST)
 		if form.is_valid():
-			Item.objects.create(text=request.POST['text'], list=list_)
+			form.save(for_list=list_)
 			return redirect(list_)
 	return render(request, 'list.html', {'list': list_, "form": form})
-
-
-	# 	try:
-	# 		item = Item(text=request.POST['text'], list=list_)
-	# 		item.full_clean()
-	# 		item.save()
-	# 		return redirect('/lists/%d/' % (list_.id,))
-	# 	except ValidationError:
-	# 		error = "You can't have an empty list item"
-	# 		return render(request, 'home.html', {"error": error})
-	# return render(request, 'list.html', {
-	# 	'list': list_, 'form': form, 'error': error
-	# })
