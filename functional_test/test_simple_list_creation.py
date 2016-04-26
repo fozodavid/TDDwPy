@@ -31,7 +31,7 @@ class NewVisitorTest(FunctionalTest):
 		#"1: buy custom Cain rifle" as an item in a to-do list
 		inputbox.send_keys(Keys.ENTER)
 
-		self.check_for_row_in_list_tabel('1: buy custom Cain rifle')
+		self.check_for_row_in_list_table('1: buy custom Cain rifle')
 
 		#There is still a text box inviting him to add another item. He
 		#enters "Sharpen blade"
@@ -39,8 +39,8 @@ class NewVisitorTest(FunctionalTest):
 		inputbox.send_keys('sharpen blade')
 		inputbox.send_keys(Keys.ENTER)
 		#The page updates again, and now shows both items on the list
-		self.check_for_row_in_list_tabel('1: buy custom Cain rifle')
-		self.check_for_row_in_list_tabel('2: sharpen blade')
+		self.check_for_row_in_list_table('1: buy custom Cain rifle')
+		self.check_for_row_in_list_table('2: sharpen blade')
 
 		self.browser.implicitly_wait(3)
 

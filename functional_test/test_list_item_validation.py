@@ -4,6 +4,9 @@ from unittest import skip
 
 class ItemValidationTest(FunctionalTest):
 
+	def get_item_input_box(self):
+		return self.browser.find_element_by_id('id_text')
+
 	def test_cannot_add_empty_list_items(self):
 		# Mr.Cain goes to the home page and accidentally tries to submit
 		# an empty list item. She hits Enter on the empty input box
@@ -12,7 +15,7 @@ class ItemValidationTest(FunctionalTest):
 
 		# The home page refreshes, and there is an error message saying 
 		# that list items cannot be blank
-		error = self.browser.find_element_by_css_selector('.has_error')
+		error = self.browser.find_element_by_class_name('errorlist')
 		self.assertEqual(error.text, "You can't have an empty list item")
 
 		# She tries again with some text for the item, which now works
@@ -24,7 +27,7 @@ class ItemValidationTest(FunctionalTest):
 
 		# She receives a similar warming on the list page
 		self.check_for_row_in_list_table('1: Buy milk')
-		error = self.browser.find_element_by_css_selector('.has_error')
+		error = self.browser.find_element_by_class_name('errorlist')
 		self.assertEqual(error.text, "You can't have an empty list item")
 
 		# And she can correct it by filling some text in
