@@ -12,7 +12,7 @@ class LoginTest(FunctionalTest):
 		)
 
 	def switch_to_new_window(self, text_in_title):
-		retries = 60
+		retries = 15
 		while retries > 0:
 			for handle in self.browser.window_handles:
 				self.browser.switch_to_window(handle)
@@ -27,7 +27,7 @@ class LoginTest(FunctionalTest):
 		# Cain goes to the awesome superlists site
 		# and notices a "Sign in" link for the first time
 		self.browser.get(self.server_url)
-		self.browser.find_element_by_id('login').click()
+		self.browser.find_element_by_id('id_login').click()
 
 		# A Persona login box appears
 		self.switch_to_new_window('Mozilla Persona')
@@ -43,6 +43,6 @@ class LoginTest(FunctionalTest):
 		self.switch_to_new_window('To-Do')
 
 		# He can see that he is logged in 
-		self.wait_for_element_with_id('logout')
+		self.wait_for_element_with_id('id_logout')
 		navbar = self.browser.find_element_by_class_name('navbar')
 		self.assertIn('cain@mockmyid.com', navbar.text)
